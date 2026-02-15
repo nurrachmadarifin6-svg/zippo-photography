@@ -2,7 +2,7 @@
 const sections = document.querySelectorAll(".section");
 
 window.addEventListener("scroll", () => {
-  sections.forEach(section => {
+  sections.forEach((section) => {
     const top = section.getBoundingClientRect().top;
     const trigger = window.innerHeight * 0.8;
 
@@ -13,11 +13,17 @@ window.addEventListener("scroll", () => {
   });
 });
 
+// Hamburger Menu
+const hamburger = document.getElementById("hamburger");
+const navMenu = document.getElementById("nav-menu");
+
+hamburger.addEventListener("click", () => {
+  navMenu.classList.toggle("active");
+});
+
 // Initial state
-sections.forEach(sec => {
+sections.forEach((sec) => {
   sec.style.opacity = 0;
   sec.style.transform = "translateY(40px)";
   sec.style.transition = "0.8s ease";
 });
-
-
