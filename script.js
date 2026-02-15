@@ -16,10 +16,35 @@ window.addEventListener("scroll", () => {
 // Hamburger Menu
 const hamburger = document.getElementById("hamburger");
 const navMenu = document.getElementById("nav-menu");
+const navLinks = document.querySelectorAll("#nav-menu a");
 
-hamburger.addEventListener("click", () => {
+// Toggle saat klik hamburger
+hamburger.addEventListener("click", (e) => {
+  e.stopPropagation();
   hamburger.classList.toggle("active");
   navMenu.classList.toggle("active");
+});
+
+// Tutup menu saat klik link
+navLinks.forEach((link) => {
+  link.addEventListener("click", () => {
+    hamburger.classList.remove("active");
+    navMenu.classList.remove("active");
+  });
+});
+
+// Tutup menu saat klik di luar
+document.addEventListener("click", (e) => {
+  if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
+    hamburger.classList.remove("active");
+    navMenu.classList.remove("active");
+  }
+});
+
+// Tutup menu saat scroll
+window.addEventListener("scroll", () => {
+  hamburger.classList.remove("active");
+  navMenu.classList.remove("active");
 });
 
 // Initial state
